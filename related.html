@@ -10,10 +10,12 @@ body {
   margin:0;
   padding:0;color:#222;font-family: 'Work Sans', sans-serif;
 }
+	
 a {
-  text-decoration:none;
+  text-decoration:none;color:#222;
   transition:all 400ms ease-in-out;
 }
+	.noite a{color:#f1f1f1}
 *{-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;}
 /* ==== Related Post Widget Start ==== */
 .related-post {
@@ -37,7 +39,7 @@ font-size: 2.2rem;
    padding:0;
     float: left;
 	width:25%;
-	height:240px;
+	height:300px;
     overflow: hidden;
     margin:0 0 4px;
 	padding:0 4px 0 0;
@@ -77,8 +79,7 @@ font-size: 2.2rem;
 .related-post-style-2 .related-post-item-more,.related-post-style-2 .related-post-item-summary,.related-post-style-2 .related-post-item-more,.related-post-style-2 .related-post-item-summary a{
   display:none;
 }
-.related-post-style-2 .related-post-item-thumbnail:after{content:"";cursor:pointer;margin:auto;width:56px;height:56px;background-image:url(https://1.bp.blogspot.com/-DpJGZ47Olck/WSkXyTDP1kI/AAAAAAAArQQ/UwIxH4hYRIkbgZkN0_mUrkK12HveGFsXACLcB/s1600/play.png);background-position:center;-webkit-background-size:48px 48px;background-size:48px 48px;position:absolute;top:0;bottom:0;left:0;right:0;opacity:0;transition:all 400ms ease-in-out;}
-.related-post-style-2 li:hover .related-post-item-thumbnail:after{opacity:.8}
+.related-post-style-2 li:hover .related-post-item-thumbnail{opacity:.8}
 @media screen and (max-width:640px){
 	.related-post-style-2 li {
 	width:50%;
