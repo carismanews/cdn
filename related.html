@@ -8,8 +8,7 @@
 body {
   background:0 0;
   margin:0;
-  padding:0;color:#333;
-  font-family:-apple-system,BlinkMacSystemFont,"Roboto","Segoe UI","Oxygen-Sans","Ubuntu","Cantarell","Helvetica Neue",sans-serif;
+  padding:0;color:#222;font-family: 'Work Sans', sans-serif;
 }
 a {
   text-decoration:none;
@@ -23,9 +22,9 @@ a {
   overflow:hidden;
 }
 .related-post h4 {
-  font-size:20px;
+font-size: 2.2rem;
   margin:0 5px 10px;
-  font-weight:500;
+  font-weight:700;
 }
 /* Style 2 */
 .related-post-style-2 {
@@ -37,14 +36,14 @@ a {
    display: block;
    padding:0;
     float: left;
-	width:33.333333%;
+	width:25%;
 	height:240px;
     overflow: hidden;
     margin:0 0 4px;
 	padding:0 4px 0 0;
 	list-style:none;
 }
-.related-post-style-2 li a:hover {color:#777}
+.related-post-style-2 li a:hover {color:#337ab7}
 .related-post-style-2 .related-post-item-thumbnail {
   width:100%;
   height:160px;
@@ -68,7 +67,7 @@ a {
   display:block;
 }
 .related-post-style-2 .related-post-item-title {
-  font-weight:500;
+  font-weight:700;
     display: block;
     display: -webkit-box;
 	margin-top:5px;
@@ -177,7 +176,7 @@ function getQueryVariable(variable) {
 var labelArray = [getQueryVariable("label")],
     relatedPostConfig = {
 		homePage: getQueryVariable("url"),
-        numPosts: 6,
+        numPosts: 8,
         summaryLength: 200,
         widgetStyle: 2
     };
