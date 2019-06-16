@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Random Post</title>
+<meta content='width=device-width, initial-scale=1' name='viewport'>
+<link href="https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700&display=swap" rel="stylesheet"/>
+<style>
+body {
+  background:0 0;
+  margin:0;
+  padding:0;color:#222;font-family: 'Work Sans', sans-serif;
+}
+	
+a {
+  transition:all 400ms ease-in-out;text-decoration:none; color: #4c4e4d;
+}
+*{-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;}
+/* ==== Related Post Widget Start ==== */
+.related-post {
+  margin:0 auto;
+  height:580px;
+  overflow:hidden;
+}
+.related-post h4 {
+font-size: 2.2rem;
+  margin:0 5px 10px;
+  font-weight:700;
+}
+/* Style 2 */
+.related-post-style-2 {
+  margin:0 -4px 0 0;
+  padding:0;
+  list-style:none;
+}
+.related-post-style-2 li {
+   display: block;
+   padding:0;
+    float: left;
+	width:25%;
+	height:300px;
+    overflow: hidden;
+    margin:0 0 4px;
+	padding:0 4px 0 0;
+	list-style:none;
+}
+.related-post-style-2 li a:hover {color:#fc0}
+.related-post-style-2 li a:hover {color:#337ab7}
+.related-post-style-2 .related-post-item-thumbnail {
+  width:100%;
+  height:160px;
+  max-width:none;
+  max-height:none;
+  background-color:transparent;
+  border:none;
+  padding:0;
+  float:none;
+  margin:0;
+  transition:all 400ms ease-in-out;
+  position:relative;
+}
+.related-post-style-2 .related-post-item-thumbnail img {
+  width:100%;
+  height:100%;
+  max-width:none;
+  max-height:none;
+  background-color:transparent;
+  border:none;
+  display:block;
+}
+.related-post-style-2 .related-post-item-title {
+  font-weight:700;
+    display: block;
+    display: -webkit-box;
+	margin-top:5px;
+	margin-bottom:0;
+	line-height:1.1;
+}
+
+.related-post-style-2 .related-post-item-more,.related-post-style-2 .related-post-item-summary,.related-post-style-2 .related-post-item-more,.related-post-style-2 .related-post-item-summary a{
+  display:none;
+}
+.related-post-style-2 li:hover .related-post-item-thumbnail{opacity:.8}
+@media screen and (max-width:640px){
+	.related-post-style-2 li {
+	width:50%;
+	}
+}
+@media screen and (max-width:414px){
+.related-post {
+  margin:0 auto;
+  height:532.84px;
+  overflow:hidden;
+}
+.related-post h4 {
+  font-size:20px;
+  margin:0 5px 10px;
+  font-weight:500;
+}
+/* Style 2 */
+.related-post-style-2 {
+  margin:0;
+  padding:0;
+  list-style:none;
+}
+.related-post-style-2 li {
+	width:100%;
+	height:82.14px;
+   display: block;
+   padding:0;
+    float: none;
+    overflow: hidden;
+    margin:0 0 8px;
+	list-style:none;
+}
+.related-post-style-2 li a:hover {color:#777}
+.related-post-style-2 .related-post-item-thumbnail {
+  width: 138px;
+  height: 82.14px;
+  max-width:none;
+  max-height:none;
+  background-color:transparent;
+  border:none;
+  padding:0;
+  float:left;
+  margin:0 8px 0 0;
+  transition:all 400ms ease-in-out;
+  position:relative;
+}
+.related-post-style-2 .related-post-item-thumbnail img {
+  width:100%;
+  height:100%;
+  max-width:none;
+  max-height:none;
+  background-color:transparent;
+  border:none;
+  display:block;
+}
+.related-post-style-2 .related-post-item-title {
+  font-weight:500;
+    display: block;
+    display: -webkit-box;
+	margin-top:-2px;
+	margin-bottom:5px;
+	line-height:1.1;
+	font-size: 90%!important;
+}
+}
+/* ==== Related Post Widget End ==== */
+</style>
+</head>
+<body>
+<div class='byvideo' id='Video_Posts'>Vídeo</div>
+<script>
+// Video Section Video
+  var numOfposts = 7;
+  var vwrap = $('.byvideo .widget-content');
+  var vcontent = vwrap.text().trim();
+var voor1=""; var voor2=""; var voor3=""; var voor4=""; var voor5=""; var voor6=""; var voor7=""; var voor8=""; var voor9="";
+      $.ajax({
+        url: "/feeds/posts/default/-/" + vcontent + "?alt=json-in-script&max-results="+ numOfposts +"",
+        type: "get",
+        dataType: "jsonp",
+        success: function (e) {
+
+          var img  = new Array();
+
+          for (var i = 0; i < 10; i++) {
+            var entry = e.feed.entry[i];
+            var posttitle = entry.title.$t;
+            var posturl;
+var tmb; var mmb;
+            
+            for (var k = 0; k < entry.link.length; k++) {
+              if (entry.link[k].rel == 'alternate') {
+                posturl = entry.link[k].href;
+                break;
+              }
+            }
+
+            if ("content" in entry) {
+              var postcontent = entry.content.$t;
+            }
+
+            s = postcontent; a = s.indexOf("<img"); b = s.indexOf("src=\"",a); c = s.indexOf("\"",b+5); d = s.substr(b+5,c-b-5);
+
+            if((a!=-1)&&(b!=-1)&&(c!=-1)&&(d!="")) img[i] = d;
+
+if (entry.content.$t.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/) != null)
+    {
+
+        var youtube_id = entry.content.$t.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/).pop();
+       
+        if (youtube_id.length == 11) {
+            tmb = "'//img.youtube.com/vi/"+youtube_id+"/mqdefault.jpg'";
+			mmb = "'//img.youtube.com/vi/"+youtube_id+"/maxresdefault.jpg'";
+            }
+    }
+
+    else if (entry.media$thumbnail)
+    {
+    var thumbUrl = entry.media$thumbnail.url;
+   var sk= thumbUrl.replace("/s72-c/","/s400/");
+    tmb = "'" + sk.replace("?imgmax=800","") + "'";
+	mmb = "'" + sk.replace("?imgmax=800","") + "'";
+    }
+
+    else if (entry.content.$t.match(/src=(.+?[\.jpg|\.gif|\.png]")/) != null)
+    {
+    // Support For 3rd Party Images
+    tmb =  entry.content.$t.match(/src=(.+?[\.jpg|\.gif|\.png]")/)[1];
+	mmb =  entry.content.$t.match(/src=(.+?[\.jpg|\.gif|\.png]")/)[1];
+    }
+    else
+    {
+    tmb = "'http://4.bp.blogspot.com/-HALLtgFeep0/VfryhQ0C5oI/AAAAAAAAPcY/77mSGND4q84/s200/Icon.png'";
+mmb = "'http://4.bp.blogspot.com/-HALLtgFeep0/VfryhQ0C5oI/AAAAAAAAPcY/77mSGND4q84/s200/Icon.png'";    
+}
+
+ 			if(i===0) {
+              voor1 = '<a href='+ posturl +'><div class="lazy vl" data-original='+ mmb +' style="background: #282828 url() no-repeat center;background-size: cover">' + '</div></a><div class="bwrap"><a href="'+ posturl +'" class="nlpost-title"><h3 class="heading">'+ posttitle +'</h3></a></div>';
+            }
+            if(i===1) {
+              voor2 = '<a href='+ posturl +'><div class="lazy vl" data-original='+ tmb +' style="background: #282828 url() no-repeat center;background-size: cover">' + '</div></a><div class="bwrap"><a href="'+ posturl +'" class="nlpost-title"><h3 class="heading">'+ posttitle +'</h3></a></div>';
+            }
+            if(i===2) {
+              voor3 = '<a href='+ posturl +'><div class="lazy vl" data-original='+ tmb +' style="background: #282828 url() no-repeat center;background-size: cover">' + '</div></a><div class="bwrap"><a href="'+ posturl +'" class="nlpost-title"><h3 class="heading">'+ posttitle +'</h3></a></div><div class="clear"/>';
+            }
+            if(i===3) {
+              voor4 = '<a href='+ posturl +'><div class="lazy vl" data-original='+ tmb +' style="background: #282828 url() no-repeat center;background-size: cover">' + '</div></a><div class="bwrap"><a href="'+ posturl +'" class="nlpost-title"><h3 class="heading">'+ posttitle +'</h3></a></div><div class="clear"/>';
+            }
+            if(i===4) {
+              voor5 = '<a href='+ posturl +'><div class="lazy vl" data-original='+ tmb +' style="background: #282828 url() no-repeat center;background-size: cover">' + '</div></a><div class="bwrap"><a href="'+ posturl +'" class="nlpost-title"><h3 class="heading">'+ posttitle +'</h3></a></div><div class="clear"/>';
+            }
+			if(i===5) {
+              voor6 = '<a href='+ posturl +'><div class="lazy vl" data-original='+ tmb +' style="background: #282828 url() no-repeat center;background-size: cover">' + '</div></a><div class="bwrap"><a href="'+ posturl +'" class="nlpost-title"><h3 class="heading">'+ posttitle +'</h3></a></div><div class="clear"/>';
+            }
+			if(i===6) {
+              voor7 = '<a href='+ posturl +'><div class="lazy vl" data-original='+ tmb +' style="background: #282828 url() no-repeat center;background-size: cover">' + '</div></a><div class="bwrap"><a href="'+ posturl +'" class="nlpost-title"><h3 class="heading">'+ posttitle +'</h3></a></div><div class="clear"/>';
+            }
+             vwrap.html("<div class='vli1'><div class='vl1'>" + voor1 + "</div></div>" + "<div class='vli2'><div class='vc'>" + voor2 + "</div>" + "<div class='vc'>" + voor3 + "</div>" + "<div class='vc'>" + voor4 + "</div>" + "<div class='vc'>" + voor5 + "</div>" + "<div class='vc'>" + voor6 + "</div>" + "<div class='vc'>" + voor7 + "</div></div>" + "<div class='clear'/>"); 
+           $('.byvideo').show();
+$(".lazy.vl").lazyload();  
+          }
+
+        }
+
+      });
+</script>
+</body>
+</html>
